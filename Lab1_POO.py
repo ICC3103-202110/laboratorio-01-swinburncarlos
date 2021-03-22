@@ -1,9 +1,8 @@
 # This is the first Lab of Object Oriented Programming
 # Monday March 22nd
 
+import numpy as np
 from numpy import *
-P1_name = ''
-P2_name = ''
 
 def user_input():
     
@@ -23,6 +22,37 @@ def game_setup(cards):
     cards_P2.random.shuffle()
 
     return cards_P1, cards_P2
+
+def matrix (cards):
+    matrixlist=[]
+    tuple1=()
+    list1=[]
+    list1=tuple(tuple1)
+    rows = cards
+    cols = cards
+
+    a = np.zeros((rows*cols))
+    for i in range(rows):
+        list1=[]
+        list1.append(i)
+        t1=tuple(list1)
+        for j in range(cols):
+            list1=list(t1)
+            list1.append(j)
+            t2=tuple(list1)
+            matrixlist.append(t2)
+            list1.remove(list1[0])
+    data=[]
+    data= matrixlist
+    i=0
+    #print(matrixlist)
+
+    m=[data[i:i+cols] for i in range(0, len(data), cols)]
+    #print(m)
+    for i in m:
+        print(i)
+
+    return m
 
 user_input()
 #game_setup(user_input[0])
