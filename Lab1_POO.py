@@ -11,30 +11,18 @@ def matrix (cards):
     list1=[]
     list1=tuple(tuple1)
 
-    if cards < 10:
+    if cards <= 10:
         rows = 1
         cols = cards
         print(rows,cols)
-    elif cards >= 10:
-        rows = float(cards)/float(10)
-        print (rows) 
-        rowss = math.ceil(rows)
-        #print(rowss)
-        #leftover = cards - rows*10 
-        #cols = leftover 
+    elif cards > 10:
+        rows = cards//10 + 1
+
         cols=10
-        print(rowss,cols)
+        print(rows,cols)
 
-    #rows = cards
-    #cols = cards
-    rows=int(rows)
-    rowss=int(rowss)
-    cards=int(cards)
-    cols=int(cols)
-    print(rows,rowss,cards,cols)
-
-    a = np.zeros((rowss*cols))
-    for i in range(rowss):
+    a = np.zeros((rows*cols))
+    for i in range(rows):
         list1=[]
         list1.append(i)
         t1=tuple(list1)
@@ -58,6 +46,8 @@ def matrix (cards):
 
 #def user_input():
     
+# ---------------------------- PROGRAM STARTS RIGHT HERE --------------------------
+
 cards = int(input('How many cards will the players have?  '))
 #P1_name = input('What is the name of the first player?')
 #P2_name = input('What is the name of the second player?')
@@ -69,36 +59,46 @@ Turns = 0
 #return cards, P1_name, P2_name
 
 #def game_setup(cards):
-cards_P1 = range(cards)
-cards_P2 = range(cards)
+cards_P1 = range(cards) + range(cards)
 
 random.shuffle(cards_P1)
-random.shuffle(cards_P2)
+
 
 print (cards_P1)
-print (cards_P2)
+#print (cards_P2)
 #    return cards_P1, cards_P2
 
 #user_input()
 #game_setup(user_input[0])
 
 mP1 = matrix(len(cards_P1))
-mP2 = matrix(len(cards_P2))
-dummy_number=0
 
-while PointsP1 < cards/2 or PointsP2 < cards/2:
+dummy_number=(len(cards_P1))
+
+while PointsP1 < cards or PointsP2 < cards:
 
     if Turns % 2 == 0:
-        print(Turns)
-        x = input('Enter x coordinate:')
-        y = input('Enter y coordinate:')
+        k=0
+        while k < 2:
+            #print(i)
+            x = input('Enter x coordinate:')
+            y = input('Enter y coordinate:')
 
-        mP1[x].insert(mP1[x].index((x, y)), cards_P1.pop(cards_P1[dummy_number]) )
-        mP1[x].pop(mP1[x].index((x, y)))
+            mP1[x].insert(mP1[x].index((x, y)), cards_P1.pop(cards_P1[dummy_number]) )
+            mP1[x].pop(mP1[x].index((x, y)))
+
+            
+            dummy_number-=Turns
+
+            print(Turns)
         
-        for i in mP1:
-            print(i)
+            for i in mP1:
+                print(i)
 
+            k+=1
+        Turns+=1
+
+    else:
         
 
         PointsP1 +=1

@@ -114,4 +114,9 @@ print(insert_num,'insert_num')
 list1[0].insert(position, insert_num )
 
 print(list1)
-print(list2)
+
+print(list2,'list2')
+
+print(list2.clear())
+
+
